@@ -10,7 +10,6 @@ services:
       - $PWD/logs:/root/logs
     environment:
       - MONGO_URL=mongodb
-      - EXTRA_OPTS="--lower_case_table_names=1"
       - TZ=Asia/Taipei
     ports: 
       - "8080:8080"    
@@ -28,6 +27,7 @@ services:
     image: "smcline06/cacti"
     depends_on:
       - rdbms
+      - ap
     ports:
         - "80:80"
         - "443:443"
