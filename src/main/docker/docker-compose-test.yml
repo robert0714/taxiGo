@@ -1,33 +1,10 @@
 version: '2'
 
-services:
-  ap:
-    container_name: robert-app
-    depends_on:
-      - mongodb
-    image: ${docker.repository.name}:${project.version}
-    volumes:
-      - $PWD/logs:/root/logs
-    environment:
-      - MONGO_URL=mongodb
-      - TZ=Asia/Taipei
-    ports: 
-      - "8080:8080"    
-  mongodb:
-    container_name: robert-mongodb
-    restart: always
-    image: mongo:latest
-    ports:
-      - "27017:27017"    
-    volumes:
-      - data/mongodb:/data/db
-    environment:
-      - MONGODB_DATABASE=ec  
+services: 
   cacti:
     image: "smcline06/cacti"
     depends_on:
       - rdbms
-      - ap
     ports:
         - "80:80"
         - "443:443"
