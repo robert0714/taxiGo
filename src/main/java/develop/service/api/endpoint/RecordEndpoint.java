@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import develop.service.api.model.RecordRequest;
 import develop.service.api.model.TaxiRepsonse;
@@ -34,7 +35,7 @@ public class RecordEndpoint {
 		TaxiRepsonse result =new TaxiRepsonse();
 		if(!CollectionUtils.isEmpty(blankAttr)  ) {
 			String message = String.format(
-					TaxiStatus.TRA40013.getDes()+": %", StringUtils.join(blankAttr,","));
+					TaxiStatus.TRA40013.getDes()+"(%s)", StringUtils.join(blankAttr,","));
 			result.setMessage(message);
 			result.setStatus(TaxiStatus.TRA40013);
 			
@@ -52,7 +53,8 @@ public class RecordEndpoint {
 				final Object value = PropertyUtils.getProperty(parameter, name);
 				Class<?> cls = PropertyUtils.getPropertyType(parameter, name);
 				if (value == null) {
-					resultLs.add(name);
+					String jsonColumn = field.getAnnotation(JsonProperty.class).value();
+					resultLs.add(jsonColumn);
 				} else if (ClassUtils.isAssignable(cls, String.class)) {
 					String tmp = (String) value;
 					if (StringUtils.isBlank(tmp)) {
