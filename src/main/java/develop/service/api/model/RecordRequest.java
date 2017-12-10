@@ -46,6 +46,78 @@ public class RecordRequest {
 	/** The driver number. 司機姓名 */
 	@JsonProperty("driver_number")
 	private String driverNumber;
+
+	public String getPassengerId() {
+		return passengerId;
+	}
+
+	public void setPassengerId(String passengerId) {
+		this.passengerId = passengerId;
+	}
+
+	public String getBoardingDate() {
+		return boardingDate;
+	}
+
+	public void setBoardingDate(String boardingDate) {
+		this.boardingDate = boardingDate;
+	}
+
+	public String getGetOnArea() {
+		return getOnArea;
+	}
+
+	public void setGetOnArea(String getOnArea) {
+		this.getOnArea = getOnArea;
+	}
+
+	public String getGetOffArea() {
+		return getOffArea;
+	}
+
+	public void setGetOffArea(String getOffArea) {
+		this.getOffArea = getOffArea;
+	}
+
+	public String getFare() {
+		return fare;
+	}
+
+	public void setFare(String fare) {
+		this.fare = fare;
+	}
+
+	public String getFleet() {
+		return fleet;
+	}
+
+	public void setFleet(String fleet) {
+		this.fleet = fleet;
+	}
+
+	public String getDriverPhone() {
+		return driverPhone;
+	}
+
+	public void setDriverPhone(String driverPhone) {
+		this.driverPhone = driverPhone;
+	}
+
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
+	public String getDriverNumber() {
+		return driverNumber;
+	}
+
+	public void setDriverNumber(String driverNumber) {
+		this.driverNumber = driverNumber;
+	}
 	
 	
 }
