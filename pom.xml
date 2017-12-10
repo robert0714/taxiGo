@@ -93,15 +93,29 @@
 			    <artifactId>docker-maven-plugin</artifactId>
 			    <version>0.23.0</version>
 				<configuration>
+								<!-- Work with a docker-machine -->
+				<!-- https://github.com/fabric8io/docker-maven-plugin/blob/master/src/main/asciidoc/inc/_global-configuration.adoc#docker-machine -->
+<!-- 					<machine>						 -->
+<!-- 					    <name>maven</name> -->
+<!-- 					    <autoCreate>true</autoCreate> -->
+<!-- 					    <createOptions> -->
+<!-- 					      <driver>virtualbox</driver> -->
+<!-- 					      <virtualbox-cpu-count>2</virtualbox-cpu-count> -->
+<!-- 					      <virtualbox-memory>4096</virtualbox-memory>					       -->
+<!-- 					    </createOptions>					     -->
+<!-- 					</machine> -->
 					<images>
 						<image>
-							<name>${docker.repository.name}:${project.version}</name>
-							<alias>${project.artifactId}</alias>
 							<external> 
 							     <type>compose</type> 
 							     <basedir>src/main/docker</basedir> 
 							     <composeFile>docker-compose-dev.yml</composeFile>
 							</external>
+						</image>
+						<image>
+							<name>${docker.repository.name}:${project.version}</name>
+							<alias>${project.artifactId}</alias>							
+							
 							<build>
 								<from>sdorra/oracle-java-8:8u151</from>
 								<maintainer>sdorra</maintainer>
@@ -141,7 +155,7 @@
 								<log>
 									<prefix>${project.artifactId}</prefix>
 									<color>cyan</color>
-								</log>
+								</log>								
 							</run>
 						</image>
 					</images>
@@ -173,53 +187,6 @@
 			<!-- <excludedGroups>com.packtpub.mmj.user.resources.docker.DockerIntegrationTest</excludedGroups> -->
 			<!-- </configuration> -->
 			<!-- </plugin> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>jaxb2-maven-plugin</artifactId> -->
-<!-- 				<version>2.3.1</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>xjc-schema1</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>xjc</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							Use all XSDs under the schema directory for sources here. -->
-<!-- 							<sources> -->
-<!-- 								<source>src/main/schema</source> -->
-<!-- 							</sources> -->
-
-<!-- 							Package name of the generated sources. -->
-<!-- 							<packageName>develop.odata.etl.model.jaxb</packageName> -->
-<!-- 							<outputDirectory>target/generated-sources/java</outputDirectory> -->
-<!-- 							<addGeneratedAnnotation>true</addGeneratedAnnotation> -->
-<!-- 							<args> -->
-<!-- 								<param>-npa</param> -->
-<!-- 							</args> -->
-<!-- 							<npa>true</npa> -->
-<!-- 							<removeOldOutput>true</removeOldOutput> -->
-<!-- 							<verbose>false</verbose> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>build-helper-maven-plugin</artifactId>  -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<phase>generate-sources</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>add-source</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<sources> -->
-<!-- 								<source>target/generated-sources/java</source> -->
-<!-- 							</sources> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin>	 -->
 		</plugins>
 	</build>
 
