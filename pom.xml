@@ -148,10 +148,10 @@
 										<volume>${user.home}/logs:/logs:ro</volume>
 									</bind>
 								</volumes>
-								<wait>
-									<url>http://${docker.host.address}:${docker.port}</url>
-									<time>100000</time>
-								</wait>
+<!-- 								<wait> -->
+<!-- 									<url>http://${docker.host.address}:${docker.port}</url> -->
+<!-- 									<time>100000</time> -->
+<!-- 								</wait> -->
 								<log>
 									<prefix>${project.artifactId}</prefix>
 									<color>cyan</color>
