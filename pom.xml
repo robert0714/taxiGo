@@ -33,15 +33,18 @@
 	</parent>
 
 	<dependencies>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-data-mongodb</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-		 
+		 <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId> 
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -105,21 +108,14 @@
 <!-- 					    </createOptions>					     -->
 <!-- 					</machine> -->
 					<images>
-<!-- 						<image> -->
+						<image>
+							<name>${docker.repository.name}:${project.version}</name>
+							<alias>${project.artifactId}</alias>							
 <!-- 							<external>  -->
 <!-- 							     <type>compose</type>  -->
 <!-- 							     <basedir>src/main/docker</basedir>  -->
 <!-- 							     <composeFile>docker-compose-dev.yml</composeFile> -->
 <!-- 							</external> -->
-<!-- 						</image> -->
-						<image>
-							<name>${docker.repository.name}:${project.version}</name>
-							<alias>${project.artifactId}</alias>							
-							<external> 
-							     <type>compose</type> 
-							     <basedir>src/main/docker</basedir> 
-							     <composeFile>docker-compose-dev.yml</composeFile>
-							</external>
 							<build>
 								<from>sdorra/oracle-java-8:8u151</from>
 								<maintainer>sdorra</maintainer>

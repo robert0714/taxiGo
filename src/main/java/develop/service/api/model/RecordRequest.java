@@ -1,5 +1,8 @@
 package develop.service.api.model;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty; 
@@ -15,9 +18,10 @@ public class RecordRequest {
 	@JsonProperty("passenger_id")
 	private String passengerId;
 	
-	/** The boarding date. 搭乘日期*/
+	/** The boarding date. 搭乘日期,格式為：2014-06-25 */
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@JsonProperty("boarding_date")
-	private String boardingDate;
+	private Date boardingDate;
 	
 	/** The get on area. 上車地區*/
 	@JsonProperty("get_on_area")
@@ -55,11 +59,11 @@ public class RecordRequest {
 		this.passengerId = passengerId;
 	}
 
-	public String getBoardingDate() {
+	public Date getBoardingDate() {
 		return boardingDate;
 	}
 
-	public void setBoardingDate(String boardingDate) {
+	public void setBoardingDate(Date boardingDate) {
 		this.boardingDate = boardingDate;
 	}
 
